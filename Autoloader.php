@@ -26,22 +26,21 @@ namespace App {
          */
         static function autoload($class)
         {
-            $delimiter = '\\';
             $dir = explode('\\', $class);
-            if(is_dir(__DIR__ . $delimiter .$delimiter.$dir[0])) {
+            $path = __DIR__ ."/".$dir[0];
+            if(is_dir(realpath($path))) {
                 $files = explode('_', preg_replace('/(?<=\\w)(?=[A-Z])/',"_$1", $dir[1]));
-                echo __DIR__ . $delimiter .$delimiter.$dir[0].$delimiter.$files[1].$delimiter.$files[0];
-                if(__DIR__ . $delimiter .$delimiter.$dir[0].$delimiter.$files[1].$delimiter.$files[0]) {
-
+                $path .= "/".$files[1]."/".$dir[1].'.php';
+                if(file_exists(realpath($path))) {
+                    require_once(realpath($path));
                 } else {
-
+                    echo "Le fichier $dir[1] n'existe pas dans le namespace $dir[0]";
+                    exit();
                 }
             } else {
-                echo 'test';
+                echo "Le Namespace $dir[0] n'existe pas !";
+                exit();
             }
-
-            //echo __DIR__ . '\\..\\' . $class . '.php';
-            //require __DIR__ . '\\..\\' . $class . '.php';
         }
     }
 }
