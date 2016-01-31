@@ -11,67 +11,27 @@ namespace App {
     {
         static function register()
         {
-            spl_autoload_register(array(__CLASS__, '_autoloadController'));
-            spl_autoload_register(array(__CLASS__, '_autoloadModel'));
-            spl_autoload_register(array(__CLASS__, '_autoloadView'));
+            spl_autoload_register(array(__CLASS__, '_autoload'));
         }
 
-        static function _autoloadController($class) {
+        static function _autoload($class)
+        {
             $dir = explode('\\', $class);
-            $path = __DIR__ ."/".$dir[0];
-
+            $path = __DIR__.'/'.$dir[0];
             if(is_dir(realpath($path))) {
-                if(strpos($dir[1], 'Controller')) {
-                    $path .= "/Controller/".$dir[1].'.php';
-
-                    if (file_exists($path)) {
-                        require_once(realpath($path));
+                $path .= '/'.$dir[1];
+                if(is_dir(realpath($path))) {
+                    $path .= '/'.$dir[2].'.php';
+                    if(file_exists(realpath($path))) {
+                        require realpath($path);
                     } else {
-                        echo "Le fichier ${dir[1]} n'existe pas dans le namespace ${dir[0]}";
-                        return true;
+                        echo "le fichier ${dir[2]}.php n'existe pas dans le namespace ${dir[0]}";
                     }
                 } else {
-                    return false;
+                    echo "le dossier ${dir[1]} n'existe pas dans le namespace ${dir[0]}";
                 }
             } else {
-                echo "Le Namespace ${dir[0]} n'existe pas !";
-                return true;
-            }
-        }
-
-        static function _autoloadModel($class) {
-            $dir = explode('\\', $class);
-            $path = __DIR__ ."/".$dir[0];
-
-            if(strpos($dir[1], 'Model')) {
-                $path .= "/Model/".$dir[1].'.php';
-
-                if (file_exists($path)) {
-                    require_once(realpath($path));
-                } else {
-                    echo "Le fichier ${dir[1]} n'existe pas dans le namespace ${dir[0]}";
-                    return true;
-                }
-            } else {
-                return false;
-            }
-        }
-
-        static function _autoloadView($class) {
-            $dir = explode('\\', $class);
-            $path = __DIR__ ."/".$dir[0];
-            
-            if(strpos($dir[1], 'View')) {
-                $path .= "/View/".$dir[1].'.php';
-
-                if (file_exists($path)) {
-                    require_once(realpath($path));
-                } else {
-                    echo "Le fichier ${dir[1]} n'existe pas dans le namespace ${dir[0]}";
-                    return true;
-                }
-            } else {
-                return false;
+                echo "le namespace ${dir[0]} n'existe pas";
             }
         }
     }

@@ -9,7 +9,7 @@
 /**
  * Class Autoloader
  */
-namespace App {
+namespace App\Controller {
     class indexController
     {
         public function index() {
