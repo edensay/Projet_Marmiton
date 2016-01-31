@@ -24,14 +24,8 @@ namespace App {
                     $path .= '/'.$dir[2].'.php';
                     if(file_exists(realpath($path))) {
                         require realpath($path);
-                    } else {
-                        echo "le fichier ${dir[2]}.php n'existe pas dans le namespace ${dir[0]}";
                     }
-                } else {
-                    echo "le dossier ${dir[1]} n'existe pas dans le namespace ${dir[0]}";
                 }
-            } else {
-                echo "le namespace ${dir[0]} n'existe pas";
             }
         }
     }
