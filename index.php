@@ -15,6 +15,7 @@ if (count($uri) > 0) {
 	if(isset($uri[1])) {
 		if(method_exists($controller, $uri[1])) {
 			$controller->$uri[1]();
+			return;
 		} else {
 			echo "La fonction ${uri[1]} n'existe pas dans le controller ${uri[0]}!";
 		}
