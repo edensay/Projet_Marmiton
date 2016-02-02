@@ -7,6 +7,7 @@
 <body>
     <div class="container">
         <h1><?php echo $nom ?></h1>
+        <?php echo $form ?>
 Top !
 </div>
 </body>

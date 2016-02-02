@@ -17,8 +17,9 @@ class PageController extends BaseController{
      * @param string $name Name of the page
      */
     function index($name = 'Default'){
+        $form = new RecetteForm();
         $this->set('titrePage', 'Nom de ma page : '.$name);
-        $this->set(array('nom' => $name, 'contenu' => 'paragraphe'));
+        $this->set(array('nom' => $name, 'contenu' => 'paragraphe', "form" =>$form->render()));
         $this->render('index');
     }
 
