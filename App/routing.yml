@@ -1,0 +1,4 @@
+test.render:
+  path: '/test'
+  controller: '\App\Controller\test::fuck'
+  title: 'Fuck Me'
