@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-
+use App\lib\Spyc;
 class Controller
 {
     public static function dispatcher()
@@ -13,6 +13,7 @@ class Controller
 
     private function getFile()
     {
+        return new Spyc(__DIR__ . '\App\routing.yml');
         return yaml_parse_file(__DIR__ . '\App\routing.yml');
     }
 
