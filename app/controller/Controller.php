@@ -13,13 +13,18 @@ class Controller
 
     private function getFile()
     {
-        return new Spyc(__DIR__ . '\App\routing.yml');
-        return yaml_parse_file(__DIR__ . '\App\routing.yml');
+        return Spyc::YAMLLoad(__DIR__ . '/routing.yml');
     }
 
-    private function getRoute($file)
+    private function getRoute($routes)
     {
-        $debug = 1;
+        foreach($routes as $route){
+            if($route['path'] == $_SERVER['REQUEST_URI']){
+                $controller = explode('::', $route['controller']);
+                return call_user_func($route['controller']);
+            }
+        }
+        return call_user_func('\app\controller\erreur::erreur404');
     }
 
 }
