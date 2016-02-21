@@ -11,12 +11,17 @@ class Autoloader
 
     public static function autoload($class)
     {
-        $nameSpace = explode('\\', $class);
-        $nameSpace = array_map('strtolower', $nameSpace);
-        $i = count($nameSpace) - 1;
-        $nameSpace[$i] = ucfirst($nameSpace[$i]);
-        $class = implode('/', $nameSpace);
-        require $class . '.php';
+        if (0 == strpos($class, 'Twig')) {
+            $nameSpace = explode('\\', $class);
+            $nameSpace = array_map('strtolower', $nameSpace);
+            $i = count($nameSpace) - 1;
+            $nameSpace[$i] = ucfirst($nameSpace[$i]);
+            $class = implode('/', $nameSpace);
+            require $class . '.php';
+        }
+        else {
+            require_once ROOT.'app/lib/Twig/Autoloader.php';
+    }
     }
 
 }
