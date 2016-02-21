@@ -17,9 +17,9 @@ class view
 
 
 
-        $header = $twig->render('header.twig', []);
-        $content = $twig->render($template.'.twig', $datas);
-        $footer = $twig->render('footer.twig', []);
+        $header = $twig->render('region/header.twig', []);
+        $content = $twig->render('page/'.$template.'.twig', $datas);
+        $footer = $twig->render('region/footer.twig', []);
 
         print $twig->render('index.twig',
             [
