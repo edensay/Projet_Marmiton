@@ -2,3 +2,8 @@ test.render:
   path: '/test'
   controller: '\Core\controller\test::fuck'
   title: 'Fuck Me'
+
+test.render:
+  path: '/install'
+  controller: '\Core\controller\install::render'
+  title: 'Fuck Me'
