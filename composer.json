@@ -2,7 +2,8 @@
     "name": "marmiton/core",
     "description": "projet marmiton",
     "require": {
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "php-curl-class/php-curl-class": "^4.10"
     },
     "authors": [
         {
