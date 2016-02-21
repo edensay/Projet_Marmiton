@@ -12,7 +12,7 @@ class view
         \Twig_Autoloader::register();
         $loader = new Twig_Loader_Filesystem(ROOT.'app/view/templates');
         $twig = new Twig_Environment($loader, array(
-            'cache' => 'false',
+            //'cache' => 'cache', l'emplacement de la génération de cache
         ));
 
 
