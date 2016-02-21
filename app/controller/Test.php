@@ -6,7 +6,7 @@ class test
 {
     public function fuck()
     {
-        return new View('test',[]);
+        return View::render('test', []);
     }
 
 

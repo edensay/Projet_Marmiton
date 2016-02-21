@@ -20,7 +20,6 @@ class Controller
     {
         foreach($routes as $route){
             if($route['path'] == $_SERVER['REQUEST_URI']){
-                $controller = explode('::', $route['controller']);
                 return call_user_func($route['controller']);
             }
         }
