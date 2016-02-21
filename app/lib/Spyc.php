@@ -1,5 +1,5 @@
 <?php
-namespace app\lib;
+namespace Core\lib;
 
 if (!function_exists('spyc_load')) {
     /**

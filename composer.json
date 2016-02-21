@@ -1,0 +1,17 @@
+{
+    "name": "marmiton/core",
+    "description": "projet marmiton",
+    "require": {
+        "twig/twig": "~1.0"
+    },
+    "authors": [
+        {
+            "name": "keyral",
+            "email": "simon.raynaud42@gmail.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {"Core": "Core/"}
+    }
+}

@@ -1,12 +1,11 @@
 <?php
-namespace App\Controller;
+namespace Core\Controller;
 
-use App\lib\Spyc;
+use Core\lib\Spyc;
 class Controller
 {
     public static function dispatcher()
     {
-        $debug = 1;
         return self::getRoute(self::getFile());
     }
 
@@ -20,10 +19,11 @@ class Controller
     {
         foreach($routes as $route){
             if($route['path'] == $_SERVER['REQUEST_URI']){
+
                 return call_user_func($route['controller']);
             }
         }
-        return call_user_func('\app\controller\erreur::erreur404');
+        return call_user_func('Core\controller\erreur::erreur404');
     }
 
 }
