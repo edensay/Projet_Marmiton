@@ -17,9 +17,11 @@ class Controller
 
     private function getRoute($routes)
     {
+        if ($_SERVER['REQUEST_URI'] == '/') {
+            return call_user_func('\Core\controller\accueil::accueil');
+        }
         foreach($routes as $route){
             if($route['path'] == $_SERVER['REQUEST_URI']){
-
                 return call_user_func($route['controller']);
             }
         }
