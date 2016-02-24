@@ -14,27 +14,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../../public/css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../../public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <title>Twig for ever</title>
 
 </head>
-<body>
-
 {% if header %}
     {{ header|raw  }}
 {% endif %}
 
-{% if content %}
-<div role="main">
-    {{ content|raw  }}
-</div>
-{%  endif %}
+<body>
+	<br/>
+	{% if content %}
+	<section id="portfolio">
+	    {{ content|raw  }}
+	</section>
+
+	{%  endif %}
 
 
 {% if footer %}
     {{ footer|raw  }}
 {% endif %}
 
+<script src="../../../public/js/jquery.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../public/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="../../../public/js/classie.js"></script>
+    <script src="../../../public/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../../../public/js/jqBootstrapValidation.js"></script>
+    <script src="../../../public/js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../../public/js/freelancer.js"></script>
 </body>
 </html>

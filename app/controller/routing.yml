@@ -1,4 +1,9 @@
-test.render:
-  path: '/test'
-  controller: '\Core\controller\test::fuck'
-  title: 'Fuck Me'
+accueil.render:
+  path: '/accueil'
+  controller: '\Core\controller\accueil::accueil'
+  title: 'Marmiton'
+
+newRecette.render:
+  path: '/recette/add'
+  controller: '\Core\controller\form::recetteForm'
+  title: 'Marmiton'
