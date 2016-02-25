@@ -10,7 +10,7 @@ class recette
     public function getLastRecettes()
     {
         $PDO = myPdo::getInstance();
-        $res = $PDO->query('SELECT titre, img FROM recettes ORDER BY idr DESC LIMIT 6');
+        $res = $PDO->query('SELECT idr, titre, img FROM recettes ORDER BY idr DESC LIMIT 6');
         return $res->fetchAll();
     }
     
