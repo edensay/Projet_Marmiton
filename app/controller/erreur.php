@@ -7,6 +7,4 @@ class erreur
     {
         return 'je suis la page erreur 404, non trouver';
     }
-
-
 }
