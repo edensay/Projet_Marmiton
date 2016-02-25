@@ -1,0 +1,11 @@
+{% for recette in recettes %}
+        <li>{{ recette.titre}} - {{recette.img }}</li>
+{% endfor %}
+
+{% for commentaire in commentaires %}
+        <li>{{ commentaire.nom }} - {{ commentaire.note }} - {{ commentaire.commentaire }}</li>
+{% endfor %}
+
+{% for detail in recetteDetail %}
+        <li>detail.texte</li>
+{% endfor %}

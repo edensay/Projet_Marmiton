@@ -7,3 +7,8 @@ newRecette.render:
   path: '/recette/add'
   controller: '\Core\controller\form::recetteForm'
   title: 'Marmiton'
+  
+test.render:
+  path: '/test'
+  controller: '\Core\controller\accueil::test'
+  title: 'Marmiton'

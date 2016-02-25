@@ -10,9 +10,9 @@ class myPdo{
     
     private function __construct() {
         $this->engine = 'mysql';
-        $this->host = 'localhost';
-        $this->database = 'marmiton';
-        $this->user = 'root';
+        $this->host = getenv('IP');
+        $this->database = 'c9';
+        $this->user = getenv('C9_USER');
         $this->pass = '';
         $dns = $this->engine.':dbname='.$this->database.";host=".$this->host;
         self::$_instance = new \PDO($dns, $this->user, $this->pass);
