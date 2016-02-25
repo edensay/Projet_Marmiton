@@ -41,7 +41,6 @@ class recette
                     WHERE idr = :id";
         $recette = $PDO->prepare($query);
         $recette->execute(array(':id' => $id));
-        //var_dump($recette->fetchAll());
         return $recette->fetchAll();
     }
 }

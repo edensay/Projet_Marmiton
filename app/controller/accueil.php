@@ -17,7 +17,6 @@ class accueil
         //recette::insertCommentaire(array('id' => 1, 'nom'=> 'maltuin2', 'note'=> 4, 'commentaire'=> 'DeuxiemeCom'));
         $test2 = recette::getCommentaire(1);
         $test3 = recette::getRecette(1);
-        var_dump($test3);
         return view::render('test', array("commentaires" => $test2, "recettes" => $test1, "recetteDetail" => $test3));
     }
 }
