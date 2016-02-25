@@ -11,7 +11,6 @@ class recette
     {
 
         $query = myPdo::getInstance();
-        $query->query('select * from recette');
-        var_dump($query);
+        //$query->query('select * from recette');
     }
 }
