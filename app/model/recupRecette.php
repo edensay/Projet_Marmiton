@@ -47,6 +47,7 @@ class recupRecette
         $query = "SELECT R.idr, R.titre, R.temps, R.texte, R.img ,
                     (SELECT GROUP_CONCAT( B.nom SEPARATOR  ', ' ) FROM ingredients A LEFT JOIN ingredientListe B ON A.idi = B.idil WHERE idr = :id ) AS ingredients,
                     (SELECT GROUP_CONCAT( quantité SEPARATOR  ', ' ) FROM ingredients WHERE idr = :id) AS quantites,
+                    (SELECT GROUP_CONCAT( B.volume SEPARATOR  ', ' ) FROM ingredients A LEFT JOIN volumeListe B ON A.idv = B.idv WHERE idr = :id ) as volumes,
                     (SELECT GROUP_CONCAT( B.nom SEPARATOR  ', ' ) FROM tags A LEFT JOIN tagList B ON A.idt = B.idt WHERE idr = :id ) as tags
                     FROM recettes R
                     WHERE idr = :id";
