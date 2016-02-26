@@ -1,3 +1,5 @@
 {% for recette in Recettes %}
-    {{recette.count}}
+<div>
+    <a href="/recette?{{recette.idr}}">{{recette.titre}}</a>
+    </div>
 {% endfor %}

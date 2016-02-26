@@ -13,17 +13,12 @@ renderRecette.render:
   controller: '\Core\controller\recettec::renderRecette'
   title: 'Marmiton'
   
-test.render:
-  path: '/test'
-  controller: '\Core\controller\accueil::test'
-  title: 'Marmiton'
-  
 resultat.render:
   path: '/resultat'
-  controller: '\Core\controller\accueil::resultat'
+  controller: '\Core\controller\recettec::resultat'
   title: 'Marmiton'
   
 recherche.render:
   path: '/recherche'
-  controller: '\Core\controller\accueil::recherche'
+  controller: '\Core\controller\recettec::recherche'
   title: 'Marmiton'
