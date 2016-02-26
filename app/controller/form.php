@@ -35,7 +35,6 @@ class form
     				exit();
     			}
     			$filename = $_POST['nom'].'_'.$fileName;
-    			var_dump(ROOT."public/img/$filename");
     			$moveResult = move_uploaded_file($fileTmpLoc, ROOT."public/img/$filename");
     
     			if ($moveResult != true) {
@@ -59,9 +58,12 @@ class form
             );
             if (count(recupRecette::rechercheRecette($_POST['tags'], $_POST['ingredient'], $_POST['nom'])) > 0)
             {
-                //envoi du mail
+                mail ( $_POST['user_email'] , "Marmiton" , "Bonjour ".$_POST['pseudo']."\n Votre recette n'a pas été validée.");
+                header("Location: /accueil");
             } else {
                 recette::newRecette($params);
+                mail ( $_POST['user_email'] , "Marmiton" , "Bonjour ".$_POST['pseudo']."\n Votre recette a été validée.");
+                header("Location: /accueil");
             }
         }
     }

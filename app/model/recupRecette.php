@@ -60,7 +60,6 @@ class recupRecette
         $temp = "";
         $query = "SELECT R.idr, R.titre, R.img,(";
         $bool = 0;
-        var_dump($tags);
         foreach($tags as $tag)
         {
             is_int($tag) ? $temp .= "( SELECT COUNT(*)  FROM tags WHERE idt = $tag AND idr = R.idr)" :'';
