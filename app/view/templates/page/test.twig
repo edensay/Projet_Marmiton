@@ -52,13 +52,10 @@ textarea {
 <h3>Temps de préparation : {{recetteDetail.temps}} minutes</h3><br>
 <h3>Ingredients</h3>
 <p class="ct">
-    <span class="ingredients">
 {% for i in range(0, end) %}
-    <span>{{recetteDetail.ingredients[i]}} : </span>
-    <span>{{recetteDetail.quantites[i]}}{{recetteDetail.volumes[i]}}</span>
-    </span> 
-</p>
+    <span class="ingredients">{{recetteDetail.ingredients[i]}} : {{recetteDetail.quantites[i]}}{{recetteDetail.volumes[i]}}</span>
 {% endfor %}
+</p>
 <h3>Préparation :</h3><br>
 {% for etape in recetteDetail.texte %}
 
