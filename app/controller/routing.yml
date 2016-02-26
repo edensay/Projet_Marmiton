@@ -8,7 +8,22 @@ newRecette.render:
   controller: '\Core\controller\form::recetteForm'
   title: 'Marmiton'
   
+renderRecette.render:
+  path: '/recette'
+  controller: '\Core\controller\recettec::renderRecette'
+  title: 'Marmiton'
+  
 test.render:
   path: '/test'
   controller: '\Core\controller\accueil::test'
+  title: 'Marmiton'
+  
+resultat.render:
+  path: '/resultat'
+  controller: '\Core\controller\accueil::resultat'
+  title: 'Marmiton'
+  
+recherche.render:
+  path: '/recherche'
+  controller: '\Core\controller\accueil::recherche'
   title: 'Marmiton'

@@ -1,89 +1,122 @@
 <script type="text/javascript">
-var i = 1
-var contenu = ""
-     
-function nouveauIng(){
-    i = i + 1;
-    contenu = contenu + "<input type='text' name='ingredient[]' class='form-control ing' placeholder='Ingrédient " + i +"'/> <input type='number' value='1' min='0' step='1' class='form-control mesure'> <select name='unité[]' class='form-control mesure'><option name='unité[]'>gramme</option><option name='unité[]'>milligramme</option><option name='unité[]'>kilogramme</option><option name='unité[]'>litre</option><option name='unité[]'>millilitre</option><option name='unité'>cuillère à soupe</option><option name='unité'>cuillère à café</option></select><br /><br>";
-    document.getElementById('newIngredient').innerHTML = contenu;
-}
+    var i = 1
+    var contenu = ""
+
+    function nouveauIng() {
+        i = i + 1;
+        contenu = contenu + "<select name='ingredient[]' class='form-control mesure'>{% for ingredients in ingredients %}<option name='ingredient[]' value='{{ingredients.idil}}'>{{ingredients.nom}}</option>{% endfor %}</select> <input type='number' value='1' min='0' step='1' class='form-control mesure' name='quantite[]' required> <select name='unite[]' class='form-control mesure'>{% for volumes in volumes %}<option name='unite[]' value='{{volumes.idv}}'>{{volumes.volume}}</option>{% endfor %}</select><br /><br>";
+        document.getElementById('newIngredient').innerHTML = contenu;
+    }
 </script>
 
 <script type="text/javascript">
-var j = 1
-var contenu2 = ""
-     
-function nouveauStep(){
-    j = j + 1;
-    contenu2 = contenu2 + "<textarea name='desc[]' placeholder='Etape "+j+"' class='step' rows='6'></textarea><br>";
-    document.getElementById('newStep').innerHTML = contenu2;
-}
+    var j = 1
+    var contenu2 = ""
+
+    function nouveauStep() {
+        j = j + 1;
+        contenu2 = contenu2 + "<textarea name='desc[]' placeholder='Etape " + j + "' class='step' rows='6' required></textarea><br>";
+        document.getElementById('newStep').innerHTML = contenu2;
+    }
 </script>
 
 <style type="text/css">
-#content {
- width: 80%;
- margin: auto;
-}
-.nom {
- width: 50%;
- margin: auto;
-}
-h3 {
- text-align: center;
-}
-h2 {
- text-align: center;
-}
-.ing {
- width: 40%;
- display: inline-block;
-}
-.mesure {
- width: 20%;
- display: inline-block;
-}
-.img {
- margin: auto;
-}
-.step {
- width: 100%;
-}
-.last {
- display: inline;
- width: 49%;
-}
-.ct {
- text-align: center;
-}
+    #content {
+        width: 80%;
+        margin: auto;
+    }
+    
+    .nom {
+        width: 50%;
+        margin: auto;
+    }
+    
+    h3 {
+        text-align: center;
+    }
+    
+    h2 {
+        text-align: center;
+    }
+    
+    .ing {
+        width: 40%;
+        display: inline-block;
+    }
+    
+    .mesure {
+        width: 20%;
+        display: inline-block;
+    }
+    
+    .img {
+        margin: auto;
+    }
+    
+    .step {
+        width: 100%;
+    }
+    
+    .last {
+        display: inline;
+        width: 49%;
+    }
+    
+    .ct {
+        text-align: center;
+    }
 </style>
 
 <div id="content">
- <h2>Ajoutez votre recette</h2><br>
- <input type="text" class="form-control nom" placeholder="Nom de la recette"><br>
- <input type="file" name="uploaded_file" class="img"/>
- <h3>Ingrédients</h3>
- <input type="text" class="form-control ing" placeholder="Ingrédient 1">
- <input type="number" value="1" min="0" step="1" class="form-control mesure">
- <select name="unité" class="form-control mesure"> 
-        <option name="unité">gramme</option>
-        <option name="unité">milligramme</option>
-        <option name="unité">kilogramme</option>
-        <option name="unité">litre</option>
-        <option name="unité">millilitre</option>
-        <option name="unité">cuillère à soupe</option>
-        <option name="unité">cuillère à café</option>
- </select><br><br>
- <div id="newIngredient"></div>
-<input type="button" onclick="nouveauIng()" value="Ajouter un ingrédient" class="btn btn-default"/>
-<h3>Etapes d'élaboration</h3>
-<textarea placeholder="Etape 1" class="step" rows="6"></textarea>
-<div id="newStep"></div>
-<input type="button" onclick="nouveauStep()" value="Ajouter une étape" class="btn btn-default"/>
-<h3>Temps de préparation</h3><br>
-<p class="ct"><input type="number" value="1" min="0" step="1" class="form-control mesure"> minutes</p><br>
-<h3>Informations</h3>
-<input type="text" class="form-control last" placeholder="Entrez un pseudonyme">
-<input type="email" name="user_email" class="form-control last" placeholder="Entrez un email"><br><br>
-<p class="ct"><input type="submit" name="submit" value="Validez votre recette" class="btn btn-default"><p>
+    <form enctype="multipart/form-data" method="post" action="/recette/add">
+        <h2>Ajoutez votre recette</h2>
+        <br>
+        <input type="text" class="form-control nom" placeholder="Nom de la recette" name="nom" required>
+        <br>
+        <input type="file" name="uploaded_file" class="img" required/>
+        <h3>Ingrédients</h3>
+        <select name="ingredient[]" class="form-control mesure">
+          {% for ingredients in ingredients %}
+            <option name="ingredient[]" value="{{ingredients.idil}}">{{ingredients.nom}}</option>
+            {% endfor %}
+        </select>
+        {#
+        <input type="text" class="form-control ing" placeholder="Ingrédient 1">#}
+        <input type="number" value="1" min="0" step="1" class="form-control mesure" name="quantite[]" required>
+        <select name="unite[]" class="form-control mesure">
+         {% for volumes in volumes %}
+            <option name="unite[]" value="{{volumes.idv}}">{{volumes.volume}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <div id="newIngredient"></div>
+        <input type="button" onclick="nouveauIng()" value="Ajouter un ingrédient" class="btn btn-default" />
+        <h3>Etapes d'élaboration</h3>
+        <textarea name="desc[]" placeholder="Etape 1" class="step" rows="6" required></textarea>
+        <div id="newStep"></div>
+        <input type="button" onclick="nouveauStep()" value="Ajouter une étape" class="btn btn-default" />
+        <h3>Temps de préparation</h3>
+        <br>
+        <p class="ct">
+            <input type="number" value="1" min="0" step="1" class="form-control mesure" name="temps" required> minutes</p>
+        <br>
+        <h3>Informations</h3>
+        <input type="text" class="form-control last" placeholder="Entrez un pseudonyme" name="pseudo" required>
+        <input type="email" name="user_email" class="form-control last" placeholder="Entrez un email" required>
+        <br>
+        <br>
+        <h3>Tags</h3> {#
+        <span class="button-checkbox">#}
+  {% for tags in tags %}
+   <span class="button-checkbox">
+          <button type="button" class="btn btn-xs" data-color="primary">{{tags.nom}}</button>
+          <input type="checkbox" class="hidden" name="tags[]" id="chef de projet event" value="{{tags.idt}}"/>
+        </span>
+  {% endfor %}
+        <p class="ct">
+            <input type="submit" value="Validez votre recette" class="btn btn-default">
+            <p>
+    </form>
 </div>
+<script type="text/javascript" src="../../../public/js/checktags.js"></script>

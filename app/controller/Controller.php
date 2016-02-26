@@ -17,11 +17,13 @@ class Controller
 
     private function getRoute($routes)
     {
-        if ($_SERVER['REQUEST_URI'] == '/') {
+        $requette = explode('?', $_SERVER['REQUEST_URI']);
+        isset($requette[1]) ? $_GET = $requette[1] : '';
+        if ($requette[0] == '/') {
             return call_user_func('\Core\controller\accueil::accueil');
         }
         foreach($routes as $route){
-            if($route['path'] == $_SERVER['REQUEST_URI']){
+            if($route['path'] == $requette[0]){
                 return call_user_func($route['controller']);
             }
         }

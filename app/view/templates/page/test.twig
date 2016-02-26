@@ -1,11 +1,72 @@
-{% for recette in recettes %}
-        <li>{{ recette.titre}} - {{recette.img }}</li>
-{% endfor %}
+{#{% for recette in recettes %}#}
+{#        <li>{{ recette.titre}} - {{recette.img }}</li>#}
+{#{% endfor %}#}
 
+{#{% for commentaire in commentaires %}#}
+{#        <li>{{ commentaire.nom }} - {{ commentaire.note }} - {{ commentaire.commentaire }}</li>#}
+{#{% endfor %}#}
+
+<style type="text/css">
+h2 {
+        text-align: center;
+}
+h3 {
+        text-align: center;
+}
+.content {
+        width: 50%;
+        margin: auto;
+}
+.content2 {
+        width: 50%;
+        margin: auto;
+        border: solid;
+        padding: 5px;
+}
+.contain {
+        border: solid;
+}
+textarea {
+        width: 100%;
+}
+.little {
+        width: 15%;
+        display: inline-block;
+}
+.ct {
+        text-align: center;
+}
+
+</style>
+<h2>{{recetteDetail.titre}}</h2>
+<h3>Temps de préparation : {{recetteDetail.temps}} minutes</h3><br>
+<h3>Préparation :</h3><br>
+{% for etape in recetteDetail.texte %}
+
+  <div class="content">
+          <div class="contain">
+          <h4>Etape {{inc}} :</h4> 
+          <p>{{etape}}</p>
+          </div><br>
+  </div>
+  {% set inc = inc + 1 %}
+{% endfor %}
+<br>
+<h3>Commentaires :</h3><br>
 {% for commentaire in commentaires %}
-        <li>{{ commentaire.nom }} - {{ commentaire.note }} - {{ commentaire.commentaire }}</li>
-{% endfor %}
-
-{% for detail in recetteDetail %}
-        <li>{{detail.texte}}</li>
-{% endfor %}
+         <div class="content">
+          <div class="contain">
+          <h4>{{commentaire.nom}} - {{commentaire.note}}</h4> 
+          <p>{{commentaire.commentaire}}</p>
+          </div><br>
+          </div>
+        {% endfor %}
+        
+<h3>Ajouter un commentaire :</h3><br>
+<form enctype="multipart/form-data" method="post" action="/test?{{recetteDetail.idr}}">
+<div class="content2">
+        <p>Noter la recette : <input type="number" value="1" min="0" max="5" step="1" class="form-control little" name="note" required> <input type="text" class="form-control little" placeholder="pseudo" name="pseudo" required></p>
+        <textarea name="comment" placeholder="Commentaire" class="step" rows="6" required></textarea>
+        <p class="ct"><input type="submit" value="Validez votre recette" class="btn btn-default"></p>
+</div>
+</form>
