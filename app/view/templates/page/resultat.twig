@@ -1,3 +1,28 @@
+<style>
+    h2 {
+        text-align: center;
+    }
+    .contenu {
+        width: 20%;
+        margin: auto;
+        text-align: center;
+        color: black;
+    }
+    .result {
+        width: 100%;
+        border: solid;
+        text-align: center;
+        padding: 5px;
+        color: black;
+    }
+    .toto {
+        width: 75%;
+    }
+</style>
+
+<h2>Résultats de la recherche</h2><br>
+<div class="contenu">
 {% for recette in Recettes %}
-    <a href="/recette?{{recette.idr}}">{{recette.titre}}</a>
+    <a href="/recette?{{recette.idr}}"><div class="result"><img src="../../../public/img/{{recette.img}}" class="toto" alt="">{{recette.titre}}</div></a><br>
 {% endfor %}
+</div>
